@@ -16,6 +16,6 @@ public class FamilyFinanceManagementApplication {
 class HelloController {
     @GetMapping("/")  // <-- This maps to "http://localhost:8080/"
     public String sayHello() {
-        return "Hello, World!";
+        return "Hello!";
     }
 }
