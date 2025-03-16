@@ -14,8 +14,13 @@ public class FamilyFinanceManagementApplication {
 
 @RestController
 class HelloController {
-    @GetMapping("/")  // <-- This maps to "http://localhost:8080/"
+    @GetMapping("/")  // Maps to "http://localhost:8080/"
     public String sayHello() {
         return "Hellooo!";
+    }
+
+    @GetMapping("/api/data")  // New endpoint for your frontend to call
+    public String getData() {
+        return "{\"message\": \"This is data from the backend!\"}";
     }
 }
