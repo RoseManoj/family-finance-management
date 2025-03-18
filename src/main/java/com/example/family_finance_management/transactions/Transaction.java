@@ -1,5 +1,6 @@
 package com.example.family_finance_management.transactions;
 
+import com.example.family_finance_management.category.Category;
 import com.example.family_finance_management.family.*;
 import com.example.family_finance_management.user.User;
 
@@ -20,12 +21,14 @@ public class Transaction {
     @Column(nullable = false)
     private Double amount;
 
-    @Column(nullable = false)
-    private String category; // e.g., groceries, utilities, entertainment
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category; // Use Category entity instead of a string
 
     @Column(nullable = false)
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TransactionType transactionType;
 
