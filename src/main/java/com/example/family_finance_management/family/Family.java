@@ -1,31 +1,28 @@
 package com.example.family_finance_management.family;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.example.family_finance_management.user.User;
 import jakarta.persistence.*;
+import lombok.Data;
 
-// Family.java
+@Data
 @Entity
 @Table(name = "families")
 public class Family {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
     @Column(nullable = false, unique = true)
-    private String familyCode;
+    private String familyCode; // Unique code for joining the family
 
-    @OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
-    private List<User> members = new ArrayList<>();
+    @Column(nullable = false, name = "member_count")
+    private int memberCount;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private String familyName;
 
-    // getters, setters
+    @OneToOne
+    @JoinColumn(name = "family_head_id", nullable = false)
+    private User familyHead; // The user who created the family
 }
