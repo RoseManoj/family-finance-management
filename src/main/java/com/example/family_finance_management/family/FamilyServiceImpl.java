@@ -24,7 +24,7 @@ public class FamilyServiceImpl implements FamilyService {
                                 .orElseThrow(() -> new RuntimeException("User not found"));
 
                 // Generate a unique family code
-                String familyCode = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+                String familyCode = UUID.randomUUID().toString().substring(0, 6).toUpperCase();
 
                 // Create the family
                 Family family = new Family();
