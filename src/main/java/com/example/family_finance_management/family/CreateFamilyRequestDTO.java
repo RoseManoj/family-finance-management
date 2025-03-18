@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class CreateFamilyRequestDTO {
     private String familyName;
-    private int memeberCount;
+    private int memberCount;
 }

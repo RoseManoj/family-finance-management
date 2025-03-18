@@ -1,5 +1,7 @@
 package com.example.family_finance_management.family;
 
+import java.time.LocalDateTime;
+
 import com.example.family_finance_management.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,4 +27,22 @@ public class Family {
     @OneToOne
     @JoinColumn(name = "family_head_id", nullable = false)
     private User familyHead; // The user who created the family
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
 }
