@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/transactions")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class TransactionController {
 
     @Autowired
@@ -33,7 +34,6 @@ public class TransactionController {
 
         // Get the logged-in user's ID
         Long userId = user.getId();
-        // Long familyId = user.getFamily().getId();
 
         TransactionResponseDTO responseDTO = transactionService.addTransaction(addTransactionRequestDTO, userId);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
@@ -43,12 +43,11 @@ public class TransactionController {
     public ResponseEntity<List<TransactionResponseDTO>> getTransactionsByFamilyId(
             @AuthenticationPrincipal UserDetails userDetails) {
 
-        // Get the logged-in user's family ID
         // Fetch the user by email (username)
         User user = userRepository.findByEmail(userDetails.getUsername())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Get the logged-in user's ID
+        // Get the logged-in user's family ID
         Long familyId = user.getFamily().getId();
 
         List<TransactionResponseDTO> transactions = transactionService.getTransactionsByFamilyId(familyId);

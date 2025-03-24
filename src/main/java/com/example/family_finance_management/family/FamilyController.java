@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import com.example.family_finance_management.user.User;
 import com.example.family_finance_management.user.UserRepository;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/families")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class FamilyController {
 
     @Autowired

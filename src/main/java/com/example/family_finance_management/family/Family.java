@@ -31,6 +31,9 @@ public class Family {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(nullable = true)
+    private Double familyIncome;
+
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 

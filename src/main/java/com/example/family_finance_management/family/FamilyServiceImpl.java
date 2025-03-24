@@ -7,6 +7,8 @@ import com.example.family_finance_management.user.User;
 import com.example.family_finance_management.user.UserRepository;
 
 import java.util.UUID;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FamilyServiceImpl implements FamilyService {
@@ -32,6 +34,7 @@ public class FamilyServiceImpl implements FamilyService {
                 family.setFamilyName(createFamilyRequestDTO.getFamilyName());
                 family.setFamilyHead(familyHead);
                 family.setMemberCount(createFamilyRequestDTO.getMemberCount());
+                family.setFamilyIncome(0.0);
 
                 // Save the family
                 Family savedFamily = familyRepository.save(family);
