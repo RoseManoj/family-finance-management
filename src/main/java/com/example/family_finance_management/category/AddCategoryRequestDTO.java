@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class AddCategoryRequestDTO {
     private String name;
+    private Double budget; // New budget field
 }

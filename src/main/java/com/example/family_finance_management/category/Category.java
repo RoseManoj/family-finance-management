@@ -20,4 +20,10 @@ public class Category {
     @ManyToOne
     @JoinColumn(name = "family_id")
     private Family family; // Optional: Associate category with a family
+
+    @Column(nullable = false)
+    private Double budget; // New budget field
+
+    @Column(nullable = false)
+    private Double spent; // New spent field
 }

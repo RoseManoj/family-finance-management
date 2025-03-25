@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.family_finance_management.family.Family;
 import com.example.family_finance_management.family.FamilyRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,12 +29,14 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = new Category();
         category.setName(addCategoryRequestDTO.getName());
         category.setFamily(family);
-
+        category.setBudget(addCategoryRequestDTO.getBudget());
+        category.setSpent(0.0);
         // Save the category
         Category savedCategory = categoryRepository.save(category);
 
         // Return the response
-        return new CategoryResponseDTO(savedCategory.getId(), savedCategory.getName());
+        return new CategoryResponseDTO(savedCategory.getId(), savedCategory.getName(), category.getBudget(),
+                category.getSpent());
     }
 
     @Override
@@ -43,7 +46,8 @@ public class CategoryServiceImpl implements CategoryService {
 
         // Convert to DTOs
         return categories.stream()
-                .map(category -> new CategoryResponseDTO(category.getId(), category.getName()))
+                .map(category -> new CategoryResponseDTO(category.getId(), category.getName(), category.getBudget(),
+                        category.getSpent()))
                 .collect(Collectors.toList());
     }
 }

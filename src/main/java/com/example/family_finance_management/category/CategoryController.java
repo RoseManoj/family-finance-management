@@ -7,7 +7,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.family_finance_management.family.FamilyRepository;
 import com.example.family_finance_management.user.User;
 import com.example.family_finance_management.user.UserRepository;
 
