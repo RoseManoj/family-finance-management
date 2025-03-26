@@ -75,4 +75,9 @@ public class TransactionServiceImpl implements TransactionService {
                                                 transaction.getTransactionType()))
                                 .collect(Collectors.toList());
         }
+
+        @Override
+        public List<TransactionResponseDTO> getTransactionsByFamilyIdAndMonth(Long familyId, int year, int month) {
+                return transactionRepository.findByFamilyIdAndYearAndMonth(familyId, year, month);
+        }
 }

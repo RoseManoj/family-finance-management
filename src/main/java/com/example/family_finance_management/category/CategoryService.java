@@ -6,4 +6,6 @@ public interface CategoryService {
     CategoryResponseDTO addCategory(AddCategoryRequestDTO addCategoryRequestDTO, Long familyId);
 
     List<CategoryResponseDTO> getCategoriesByFamilyId(Long familyId);
+
+    void increaseSpent(Long categoryId, Double amount) throws Exception;
 }
